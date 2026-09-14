@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Interfaces;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Collection;
 
 interface PostRepositoryInterface
