@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdatePostRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'author' => 'sometimes|required|string|max:100',
+        ];
+    }
+
+    public function messages(): array
+    {
+       return [
+        'title.required' => "Post Title is required .",
+        'title.max' => "Post title must be less than 255 characters",
+        'author.required' => 'Author name is must.',
+       ];
+    }
+}
